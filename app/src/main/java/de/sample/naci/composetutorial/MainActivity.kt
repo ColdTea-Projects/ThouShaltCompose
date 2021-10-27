@@ -4,6 +4,12 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.viewModels
+import androidx.compose.foundation.border
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.unit.dp
 import de.sample.naci.composetutorial.examples.AnimateSomethingAsState
 import de.sample.naci.composetutorial.examples.CircularLoading
 import de.sample.naci.composetutorial.examples.ColumnsAndRows
@@ -22,11 +28,13 @@ import de.sample.naci.composetutorial.examples.motions.AnimatedVisibilityDemo
 import de.sample.naci.composetutorial.examples.motions.CrossfadeDemo
 import de.sample.naci.composetutorial.examples.motions.CrossfadeDemo2
 import de.sample.naci.composetutorial.examples.motions.UpdateTransitionsDemo
+import de.sample.naci.composetutorial.examples.motions.draganddroplist.DragDropList
 import de.sample.naci.composetutorial.examples.stationaries.CanvasDemo
 import de.sample.naci.composetutorial.examples.stationaries.MultipleStickyHeaders
 import de.sample.naci.composetutorial.examples.stationaries.Shapes
 import de.sample.naci.composetutorial.examples.stationaries.StickyHeaderDemo
 import de.sample.naci.composetutorial.examples.system.BackPressHandler
+import de.sample.naci.composetutorial.extensions.swap
 
 class MainActivity : ComponentActivity() {
     val mainViewModel: MainViewModel by viewModels()
@@ -56,7 +64,9 @@ class MainActivity : ComponentActivity() {
 //            AnimatedVisibilityDemo()
 //            AnimatedContentDemo()
 //            UpdateTransitionsDemo()
-            TextBoxToRecompose(clicks = mainViewModel.clickCount, onClick = this::onTextBoxClicked)
+//            TextBoxToRecompose(clicks = mainViewModel.clickCount, onClick = this::onTextBoxClicked)
+
+            DragDropList(items = mainViewModel.dragAndDropList, onMove = ::onMove)
         }
     }
 
@@ -64,6 +74,14 @@ class MainActivity : ComponentActivity() {
         mainViewModel.clickCount += 1
         setContent {
             TextBoxToRecompose(clicks = mainViewModel.clickCount, onClick = this::onTextBoxClicked)
+        }
+    }
+
+    fun onMove(take: Int, with: Int) {
+        mainViewModel.dragAndDropList = mainViewModel.dragAndDropList.swap(take, with)
+
+        setContent {
+            DragDropList(items = mainViewModel.dragAndDropList, onMove = ::onMove)
         }
     }
 }
