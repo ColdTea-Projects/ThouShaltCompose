@@ -32,6 +32,7 @@ import de.sample.naci.composetutorial.examples.motions.draganddroplist.DragDropL
 import de.sample.naci.composetutorial.examples.stationaries.CanvasDemo
 import de.sample.naci.composetutorial.examples.stationaries.MultipleStickyHeaders
 import de.sample.naci.composetutorial.examples.stationaries.Shapes
+import de.sample.naci.composetutorial.examples.stationaries.StaggeredGridDemo
 import de.sample.naci.composetutorial.examples.stationaries.StickyHeaderDemo
 import de.sample.naci.composetutorial.examples.system.BackPressHandler
 import de.sample.naci.composetutorial.extensions.swap
@@ -65,8 +66,8 @@ class MainActivity : ComponentActivity() {
 //            AnimatedContentDemo()
 //            UpdateTransitionsDemo()
 //            TextBoxToRecompose(clicks = mainViewModel.clickCount, onClick = this::onTextBoxClicked)
-
-            DragDropList(items = mainViewModel.dragAndDropList, onMove = ::onMove)
+//            DragDropList(items = mainViewModel.dragAndDropList, onMove = ::onMove)
+            StaggeredGridDemo()
         }
     }
 
