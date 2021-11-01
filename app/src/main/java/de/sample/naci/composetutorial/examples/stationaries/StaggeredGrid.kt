@@ -7,7 +7,9 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.Card
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
@@ -19,27 +21,29 @@ import kotlin.math.ceil
 import kotlin.random.Random
 
 @Composable
-fun StaggeredGridDemo(){
-    LazyColumn {
-        item {
-            StaggeredVerticalGrid(
-                maxColumnWidth = 155.dp,
-                modifier = Modifier.padding(4.dp)
+fun StaggeredGridDemo() {
+    val scrollState = rememberScrollState()
+
+    StaggeredVerticalGrid(
+        maxColumnWidth = 155.dp,
+        modifier = Modifier
+            .padding(4.dp)
+            .verticalScroll(scrollState)
+    ) {
+        (1..100).forEach {
+            Card(
+                modifier = Modifier
+                    .height((100..250).random().dp)
+                    .padding(5.dp),
+                shape = RoundedCornerShape(15.dp),
+                elevation = 5.dp
             ) {
-                (1..100).forEach {
-                    Card(
-                        modifier = Modifier.height((100..250).random().dp).padding(5.dp),
-                        shape = RoundedCornerShape(15.dp),
-                        elevation = 5.dp
-                    ){
-                        Box(
-                            modifier = Modifier
-                                .width(120.dp)
-                                .fillMaxSize()
-                                .background(Color(Random.nextInt(256), Random.nextInt(256), Random.nextInt(256)))
-                        )
-                    }
-                }
+                Box(
+                    modifier = Modifier
+                        .width(120.dp)
+                        .fillMaxSize()
+                        .background(Color(Random.nextInt(256), Random.nextInt(256), Random.nextInt(256)))
+                )
             }
         }
     }
