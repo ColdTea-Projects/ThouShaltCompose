@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">ComposeTutorial</string>
+
+    <string name="group_1">G1</string>
+    <string name="group_2">G2</string>
+
 </resources>

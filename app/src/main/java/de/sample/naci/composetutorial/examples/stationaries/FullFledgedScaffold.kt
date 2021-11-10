@@ -22,7 +22,9 @@ import de.sample.naci.composetutorial.ui.theme.Purple200
 import kotlinx.coroutines.launch
 
 @Composable
-fun FullFledgedScaffold() {
+fun FullFledgedScaffold(
+    text: String = "BodyContent"
+) {
     val scaffoldState = rememberScaffoldState(rememberDrawerState(DrawerValue.Closed))
     val composeScope = rememberCoroutineScope()
 
@@ -46,7 +48,7 @@ fun FullFledgedScaffold() {
         }){
             Text(">")
         } },
-        content = { Text("BodyContent") },
+        content = { Text(text) },
         bottomBar = { BottomAppBar(backgroundColor = Purple200) { Text("BottomAppBar") } }
     )
 }

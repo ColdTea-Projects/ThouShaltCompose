@@ -10,6 +10,9 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
+import androidx.navigation.compose.NavHost
+import androidx.navigation.compose.composable
+import androidx.navigation.compose.rememberNavController
 import de.sample.naci.composetutorial.examples.AnimateSomethingAsState
 import de.sample.naci.composetutorial.examples.CircularLoading
 import de.sample.naci.composetutorial.examples.ColumnsAndRows
@@ -29,6 +32,7 @@ import de.sample.naci.composetutorial.examples.motions.CrossfadeDemo
 import de.sample.naci.composetutorial.examples.motions.CrossfadeDemo2
 import de.sample.naci.composetutorial.examples.motions.UpdateTransitionsDemo
 import de.sample.naci.composetutorial.examples.motions.draganddroplist.DragDropList
+import de.sample.naci.composetutorial.examples.navigation.NavigationDemo
 import de.sample.naci.composetutorial.examples.stationaries.CanvasDemo
 import de.sample.naci.composetutorial.examples.stationaries.MultipleStickyHeaders
 import de.sample.naci.composetutorial.examples.stationaries.Shapes
@@ -36,6 +40,8 @@ import de.sample.naci.composetutorial.examples.stationaries.StaggeredGridDemo
 import de.sample.naci.composetutorial.examples.stationaries.StickyHeaderDemo
 import de.sample.naci.composetutorial.examples.system.BackPressHandler
 import de.sample.naci.composetutorial.extensions.swap
+import de.sample.naci.composetutorial.navigation.Screen1
+import de.sample.naci.composetutorial.navigation.Screen2
 
 class MainActivity : ComponentActivity() {
     val mainViewModel: MainViewModel by viewModels()
@@ -67,7 +73,8 @@ class MainActivity : ComponentActivity() {
 //            UpdateTransitionsDemo()
 //            TextBoxToRecompose(clicks = mainViewModel.clickCount, onClick = this::onTextBoxClicked)
 //            DragDropList(items = mainViewModel.dragAndDropList, onMove = ::onMove)
-            StaggeredGridDemo()
+//            StaggeredGridDemo()
+            NavigationDemo()
         }
     }
 
