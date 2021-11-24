@@ -2,9 +2,17 @@ package de.sample.naci.composetutorial
 
 import androidx.lifecycle.ViewModel
 import de.sample.naci.composetutorial.examples.motions.draganddroplist.ReorderItem
+import timber.log.Timber
+import javax.inject.Inject
 
-class MainViewModel: ViewModel() {
+class MainViewModel @Inject constructor(): ViewModel() {
+
+    override fun onCleared() {
+        Timber.i("Cleared")
+        super.onCleared()
+    }
     var clickCount = 0
+    var nextScreenText = "Navigate to next"
 
     var dragAndDropList = listOf(
         ReorderItem(1),

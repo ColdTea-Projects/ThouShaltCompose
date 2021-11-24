@@ -1,7 +1,10 @@
 package de.sample.naci.composetutorial.examples.navigation
 
+import android.view.View
+import androidx.compose.foundation.layout.Row
 import androidx.compose.material.BottomNavigation
 import androidx.compose.material.BottomNavigationItem
+import androidx.compose.material.Button
 import androidx.compose.material.Icon
 import androidx.compose.material.Scaffold
 import androidx.compose.material.Text
@@ -10,6 +13,7 @@ import androidx.compose.material.icons.filled.Favorite
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.res.stringResource
+import androidx.lifecycle.ViewModel
 import androidx.navigation.NavDestination.Companion.hierarchy
 import androidx.navigation.NavGraph.Companion.findStartDestination
 import androidx.navigation.compose.NavHost
@@ -17,14 +21,16 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.navigation
 import androidx.navigation.compose.rememberNavController
+import de.sample.naci.composetutorial.MainViewModel
 import de.sample.naci.composetutorial.examples.navigation.model.screenGroups
 import de.sample.naci.composetutorial.navigation.Screen1
 import de.sample.naci.composetutorial.navigation.Screen2
 import de.sample.naci.composetutorial.navigation.Screen3
 import de.sample.naci.composetutorial.navigation.Screen4
+import javax.inject.Inject
 
 @Composable
-fun NavigationDemo() {
+fun NavigationDemo(viewModel: MainViewModel) {
     val navController = rememberNavController()
 
     Scaffold(
@@ -61,7 +67,7 @@ fun NavigationDemo() {
         NavHost(navController = navController, startDestination = "group1") {
             navigation(startDestination = "1", route = "group1") {
                 composable("1") {
-                    Screen1(navController = navController)
+                    Screen1(navController = navController, viewModel = viewModel)
                 }
                 composable("2/{text}") { navBackStackEntry ->
                     Screen2(

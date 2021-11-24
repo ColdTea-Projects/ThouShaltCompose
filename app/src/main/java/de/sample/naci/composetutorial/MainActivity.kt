@@ -10,6 +10,7 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
@@ -42,11 +43,18 @@ import de.sample.naci.composetutorial.examples.system.BackPressHandler
 import de.sample.naci.composetutorial.extensions.swap
 import de.sample.naci.composetutorial.navigation.Screen1
 import de.sample.naci.composetutorial.navigation.Screen2
+import javax.inject.Inject
 
 class MainActivity : ComponentActivity() {
-    val mainViewModel: MainViewModel by viewModels()
+
+
+    @Inject
+    lateinit var viewModelFactory: ViewModelProvider.Factory
+    val mainViewModel: MainViewModel by viewModels { viewModelFactory }
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        (application as ComposeSampleApplication).appComponent.inject(this)
+
         super.onCreate(savedInstanceState)
         setContent {
 //            ColumnsAndRows()
@@ -74,7 +82,7 @@ class MainActivity : ComponentActivity() {
 //            TextBoxToRecompose(clicks = mainViewModel.clickCount, onClick = this::onTextBoxClicked)
 //            DragDropList(items = mainViewModel.dragAndDropList, onMove = ::onMove)
 //            StaggeredGridDemo()
-            NavigationDemo()
+            NavigationDemo(mainViewModel)
         }
     }
 

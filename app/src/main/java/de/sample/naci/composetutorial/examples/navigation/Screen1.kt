@@ -9,10 +9,11 @@ import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.navigation.NavController
+import de.sample.naci.composetutorial.MainViewModel
 import de.sample.naci.composetutorial.examples.stationaries.StaggeredGridDemo
 
 @Composable
-fun Screen1(navController: NavController) {
+fun Screen1(navController: NavController, viewModel: MainViewModel) {
     Column(verticalArrangement = Arrangement.Top) {
         Row {
             Button(modifier = Modifier.fillMaxWidth(), onClick = {
@@ -20,7 +21,7 @@ fun Screen1(navController: NavController) {
                     popUpTo("1")
                 }
             }) {
-                Text(text = "Navigate next")
+                Text(text = viewModel.nextScreenText)
             }
         }
         Row {
