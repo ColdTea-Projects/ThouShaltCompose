@@ -1,0 +1,11 @@
+package de.sample.naci.composetutorial.gamepager.utils
+
+import kotlinx.serialization.ExperimentalSerializationApi
+import kotlinx.serialization.json.Json
+
+@ExperimentalSerializationApi
+val json = Json{
+    ignoreUnknownKeys = true
+    explicitNulls = false
+    isLenient = true
+}

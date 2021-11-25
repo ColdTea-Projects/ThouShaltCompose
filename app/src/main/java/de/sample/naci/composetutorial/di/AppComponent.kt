@@ -4,13 +4,15 @@ import android.content.Context
 import dagger.BindsInstance
 import dagger.Component
 import de.sample.naci.composetutorial.MainActivity
+import de.sample.naci.composetutorial.gamepager.GamePagerActivity
 import javax.inject.Singleton
 
 @Singleton
-@Component(modules = [NetworkModule::class, ViewModelModule::class])
+@Component(modules = [DataModule::class, ViewModelModule::class])
 interface AppComponent {
 
     fun inject(mainActivity: MainActivity)
+    fun inject(gamePagerActivity: GamePagerActivity)
 
     // Factory to create instances of the AppComponent
     @Component.Factory

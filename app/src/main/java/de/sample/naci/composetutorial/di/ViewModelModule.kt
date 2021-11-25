@@ -7,6 +7,7 @@ import dagger.Module
 import dagger.multibindings.IntoMap
 import de.sample.naci.composetutorial.ComposeSampleViewModelFactory
 import de.sample.naci.composetutorial.MainViewModel
+import de.sample.naci.composetutorial.gamepager.GamePagerViewModel
 
 @Suppress("unused")
 @Module
@@ -19,4 +20,10 @@ abstract class ViewModelModule {
     @IntoMap
     @ViewModelKey(MainViewModel::class)
     abstract fun bindMainViewModel(mainViewModel: MainViewModel): ViewModel
+
+
+    @Binds
+    @IntoMap
+    @ViewModelKey(GamePagerViewModel::class)
+    abstract fun bindGamePagerViewModel(gamePagerViewModel: GamePagerViewModel): ViewModel
 }

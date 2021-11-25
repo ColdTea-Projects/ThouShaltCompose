@@ -1,53 +1,28 @@
 package de.sample.naci.composetutorial
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.viewModels
-import androidx.compose.foundation.border
-import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.unit.dp
+import androidx.compose.material.Icon
+import androidx.compose.material.IconButton
+import androidx.compose.material.Scaffold
+import androidx.compose.material.Text
+import androidx.compose.material.TopAppBar
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Star
+import androidx.compose.ui.graphics.vector.ImageVector
+import androidx.compose.ui.res.painterResource
 import androidx.lifecycle.ViewModelProvider
-import androidx.navigation.compose.NavHost
-import androidx.navigation.compose.composable
-import androidx.navigation.compose.rememberNavController
-import de.sample.naci.composetutorial.examples.AnimateSomethingAsState
-import de.sample.naci.composetutorial.examples.CircularLoading
-import de.sample.naci.composetutorial.examples.ColumnsAndRows
-import de.sample.naci.composetutorial.examples.CompositionLocals
-import de.sample.naci.composetutorial.examples.FullFledgedScaffold
-import de.sample.naci.composetutorial.examples.ImageCardTutorial
-import de.sample.naci.composetutorial.examples.MaterialPlayground
-import de.sample.naci.composetutorial.examples.Modifiers
-import de.sample.naci.composetutorial.examples.States
-import de.sample.naci.composetutorial.examples.StylingText
-import de.sample.naci.composetutorial.examples.TextFieldButtonSnackbar
-import de.sample.naci.composetutorial.examples.Zoomable
 import de.sample.naci.composetutorial.examples.memory.TextBoxToRecompose
-import de.sample.naci.composetutorial.examples.motions.AnimatedContentDemo
-import de.sample.naci.composetutorial.examples.motions.AnimatedVisibilityDemo
-import de.sample.naci.composetutorial.examples.motions.CrossfadeDemo
-import de.sample.naci.composetutorial.examples.motions.CrossfadeDemo2
-import de.sample.naci.composetutorial.examples.motions.UpdateTransitionsDemo
 import de.sample.naci.composetutorial.examples.motions.draganddroplist.DragDropList
 import de.sample.naci.composetutorial.examples.navigation.NavigationDemo
-import de.sample.naci.composetutorial.examples.stationaries.CanvasDemo
-import de.sample.naci.composetutorial.examples.stationaries.MultipleStickyHeaders
-import de.sample.naci.composetutorial.examples.stationaries.Shapes
-import de.sample.naci.composetutorial.examples.stationaries.StaggeredGridDemo
-import de.sample.naci.composetutorial.examples.stationaries.StickyHeaderDemo
-import de.sample.naci.composetutorial.examples.system.BackPressHandler
 import de.sample.naci.composetutorial.extensions.swap
-import de.sample.naci.composetutorial.navigation.Screen1
-import de.sample.naci.composetutorial.navigation.Screen2
+import de.sample.naci.composetutorial.gamepager.GamePagerActivity
 import javax.inject.Inject
 
 class MainActivity : ComponentActivity() {
-
-
     @Inject
     lateinit var viewModelFactory: ViewModelProvider.Factory
     val mainViewModel: MainViewModel by viewModels { viewModelFactory }
@@ -57,6 +32,17 @@ class MainActivity : ComponentActivity() {
 
         super.onCreate(savedInstanceState)
         setContent {
+            Scaffold(topBar = {
+                TopAppBar(
+                    title = { Text(text = "Thou shall compose") },
+                    actions = {
+                        IconButton(onClick = ::onGamePagerActivityClicked) {
+                            Icon(painter = painterResource(id = R.drawable.ic_gaming_24), contentDescription = "Search")
+                        }
+                    }
+                )
+            }) {
+
 //            ColumnsAndRows()
 //            Modifiers()
 //            ImageCardTutorial()
@@ -83,7 +69,14 @@ class MainActivity : ComponentActivity() {
 //            DragDropList(items = mainViewModel.dragAndDropList, onMove = ::onMove)
 //            StaggeredGridDemo()
             NavigationDemo(mainViewModel)
+
+            }
         }
+    }
+
+    //For pagination example, go to Game Pager Demo
+    fun onGamePagerActivityClicked(){
+        startActivity(Intent(this, GamePagerActivity::class.java))
     }
 
     fun onTextBoxClicked() {
