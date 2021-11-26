@@ -24,7 +24,7 @@ android {
 
         debug{
             buildConfigField "String", "ROOT_URL_GAMES_API", "\"https://api.rawg.io/\""
-            buildConfigField "String", "API_KEY_GAMES", "\"dea49f9408294d80a5c4dd974a5da1d7\""
+            buildConfigField "String", "API_KEY_GAMES", "\"YOUR_APP_KEY_HERE\""
 
             minifyEnabled false
             debuggable true
@@ -32,7 +32,7 @@ android {
 
         release {
             buildConfigField "String", "ROOT_URL_GAMES_API", "\"https://api.rawg.io/\""
-            buildConfigField "String", "API_KEY_GAMES", "\"dea49f9408294d80a5c4dd974a5da1d7\""
+            buildConfigField "String", "API_KEY_GAMES", "\"YOUR_APP_KEY_HERE\""
 
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'

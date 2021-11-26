@@ -21,17 +21,15 @@ import kotlin.random.Random
 @ExperimentalFoundationApi
 @Composable
 fun GameListing(
-    games: Flow<PagingData<Result>>
+    games: Flow<PagingData<Result>>,
+    modifier: Modifier = Modifier
 ) {
     val lazyGameItems = games.collectAsLazyPagingItems()
     LazyVerticalGrid(
         cells = GridCells.Fixed(2),
+        modifier = modifier,
         content = {
             items(lazyGameItems.itemCount) { index ->
-                val color: Color = remember{
-                    Color(Random.nextInt(256), Random.nextInt(256), Random.nextInt(256))
-                }
-
                 lazyGameItems[index]?.let {
 //                    Text(
 //                        modifier = Modifier

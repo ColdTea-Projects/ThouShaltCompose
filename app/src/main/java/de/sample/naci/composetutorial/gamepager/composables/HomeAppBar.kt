@@ -8,10 +8,22 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.List
 import androidx.compose.material.icons.filled.Search
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 
 @Composable
-fun HomeAppBar(title: String, openSearch: () -> Unit, openFilters: () -> Unit) {
+fun HomeAppBar(
+    title: String,
+    openSearch: () -> Unit,
+    openFilters: () -> Unit,
+    backgroundColor: Color = Color.Black,
+    contentColor: Color = Color.White,
+    modifier: Modifier = Modifier
+) {
     TopAppBar(
+        modifier = modifier,
+        backgroundColor = backgroundColor,
+        contentColor = contentColor,
         title = { Text(text = title) },
         actions = {
             IconButton(onClick = openSearch) {

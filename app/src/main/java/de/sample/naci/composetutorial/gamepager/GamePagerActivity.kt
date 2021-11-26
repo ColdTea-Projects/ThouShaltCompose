@@ -47,7 +47,7 @@ class GamePagerActivity : ComponentActivity() {
                         HomeAppBar(title = "Game Pager", openSearch = { }, openFilters = {})
                     },
                     content = {
-                        GameListing(games = gamePagerViewModel.getAllGames())
+                        GameListing(games = gamePagerViewModel.getAllGames(), Modifier.background(Color.DarkGray))
                     }
                 )
             }
