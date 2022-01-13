@@ -32,6 +32,12 @@
             android:label="@string/app_name"
             android:theme="@style/Theme.ComposeTutorial.NoActionBar">
         </activity>
+        <activity
+            android:name=".lifecycle.LifecycleExampleActivity"
+            android:exported="true"
+            android:label="@string/app_name"
+            android:theme="@style/Theme.ComposeTutorial.NoActionBar">
+        </activity>
     </application>
 
 </manifest>

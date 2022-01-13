@@ -10,9 +10,6 @@ import androidx.compose.material.IconButton
 import androidx.compose.material.Scaffold
 import androidx.compose.material.Text
 import androidx.compose.material.TopAppBar
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Star
-import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.res.painterResource
 import androidx.lifecycle.ViewModelProvider
 import de.sample.naci.composetutorial.examples.memory.TextBoxToRecompose
@@ -20,6 +17,7 @@ import de.sample.naci.composetutorial.examples.motions.draganddroplist.DragDropL
 import de.sample.naci.composetutorial.examples.navigation.NavigationDemo
 import de.sample.naci.composetutorial.extensions.swap
 import de.sample.naci.composetutorial.gamepager.GamePagerActivity
+import de.sample.naci.composetutorial.lifecycle.LifecycleExampleActivity
 import javax.inject.Inject
 
 class MainActivity : ComponentActivity() {
@@ -38,6 +36,9 @@ class MainActivity : ComponentActivity() {
                     actions = {
                         IconButton(onClick = ::onGamePagerActivityClicked) {
                             Icon(painter = painterResource(id = R.drawable.ic_gaming_24), contentDescription = "Search")
+                        }
+                        IconButton(onClick = ::onLifecycleExampleClicked) {
+                            Icon(painter = painterResource(id = R.drawable.ic_baseline_art_track_24), contentDescription = "Fragment Lifecycle")
                         }
                     }
                 )
@@ -77,6 +78,10 @@ class MainActivity : ComponentActivity() {
     //For pagination example, go to Game Pager Demo
     fun onGamePagerActivityClicked(){
         startActivity(Intent(this, GamePagerActivity::class.java))
+    }
+
+    fun onLifecycleExampleClicked(){
+        startActivity(Intent(this, LifecycleExampleActivity::class.java))
     }
 
     fun onTextBoxClicked() {
