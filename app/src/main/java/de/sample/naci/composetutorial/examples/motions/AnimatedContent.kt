@@ -73,13 +73,13 @@ fun AnimatedContentDemo() {
                     if (targetState > initialState) {
                         // If the target number is larger, it slides up and fades in
                         // while the initial (smaller) number slides up and fades out.
-                        slideInVertically({ height -> height }) + fadeIn() with
-                                slideOutVertically({ height -> -height }) + fadeOut()
+                        slideInVertically(initialOffsetY = { -40 }) + fadeIn() with
+                                slideOutVertically(targetOffsetY = { -40 }) + fadeOut()
                     } else {
                         // If the target number is smaller, it slides down and fades in
                         // while the initial number slides down and fades out.
-                        slideInVertically({ height -> -height }) + fadeIn() with
-                                slideOutVertically({ height -> height }) + fadeOut()
+                        slideInVertically(initialOffsetY = { -40 }) + fadeIn() with
+                                slideOutVertically(targetOffsetY = { -40 }) + fadeOut()
                     }.using(
                         // Disable clipping since the faded slide-in/out should
                         // be displayed out of bounds.

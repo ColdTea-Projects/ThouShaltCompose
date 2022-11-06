@@ -79,7 +79,7 @@ fun AnimatedVisibilityDemo() {
         Row(modifier = Modifier.height(100.dp)) {
             AnimatedVisibility(
                 visibleState = visible,
-                enter = expandIn(Alignment.BottomEnd),
+                enter = expandIn(expandFrom = Alignment.BottomEnd),
                 exit = fadeOut(
                     // Fade in with the initial alpha of 0.3f.
                     targetAlpha = 0.3f
@@ -100,8 +100,8 @@ fun AnimatedVisibilityDemo() {
         Row(modifier = Modifier.height(100.dp)) {
             AnimatedVisibility(
                 visibleState = visible,
-                enter = expandIn(Alignment.BottomEnd),
-                exit = shrinkOut(Alignment.BottomEnd)
+                enter = expandIn(expandFrom = Alignment.BottomEnd),
+                exit = shrinkOut(shrinkTowards = Alignment.BottomEnd)
             ) {
                 Box(
                     modifier = Modifier
