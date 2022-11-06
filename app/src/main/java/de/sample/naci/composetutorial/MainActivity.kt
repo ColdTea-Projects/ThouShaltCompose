@@ -13,6 +13,7 @@ import androidx.compose.material.TopAppBar
 import androidx.compose.ui.res.painterResource
 import androidx.lifecycle.ViewModelProvider
 import de.sample.naci.composetutorial.examples.memory.TextBoxToRecompose
+import de.sample.naci.composetutorial.examples.motions.LookaheadLayoutDemo
 import de.sample.naci.composetutorial.examples.motions.draganddroplist.DragDropList
 import de.sample.naci.composetutorial.examples.navigation.NavigationDemo
 import de.sample.naci.composetutorial.extensions.swap
@@ -69,7 +70,8 @@ class MainActivity : ComponentActivity() {
 //            TextBoxToRecompose(clicks = mainViewModel.clickCount, onClick = this::onTextBoxClicked)
 //            DragDropList(items = mainViewModel.dragAndDropList, onMove = ::onMove)
 //            StaggeredGridDemo()
-            NavigationDemo(mainViewModel)
+//            NavigationDemo(mainViewModel)
+            LookaheadLayoutDemo()
 
             }
         }
